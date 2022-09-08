@@ -12,15 +12,15 @@ library(boastUtils)
 ui <- list(
   ## Create the app page ----
   dashboardPage(
-    skin = "blue",
+    skin = "purple",
     ### Create the app header ----
     dashboardHeader(
-      title = "App Template", # You may use a shortened form of the title here
+      title = "Statistical Interpretations", # You may use a shortened form of the title here
       titleWidth = 250,
       tags$li(class = "dropdown", actionLink("info", icon("info"))),
       tags$li(
         class = "dropdown",
-        boastUtils::surveyLink(name = "App_Template")
+        boastUtils::surveyLink(name = "Statistical_Interpretations")
       ),
       tags$li(
         class = "dropdown",
@@ -36,10 +36,10 @@ ui <- list(
         id = "pages",
         menuItem("Overview", tabName = "overview", icon = icon("tachometer-alt")),
         menuItem("Prerequisites", tabName = "prerequisites", icon = icon("book")),
-        menuItem("Explore", tabName = "explore", icon = icon("wpexplorer")),
-        menuItem("Challenge", tabName = "challenge", icon = icon("cogs")),
+        #menuItem("Explore", tabName = "explore", icon = icon("wpexplorer")),
+        #menuItem("Challenge", tabName = "challenge", icon = icon("cogs")),
         menuItem("Game", tabName = "game", icon = icon("gamepad")),
-        menuItem("Wizard", tabName = "wizard", icon = icon("hat-wizard")),
+        #menuItem("Wizard", tabName = "wizard", icon = icon("hat-wizard")),
         menuItem("References", tabName = "references", icon = icon("leanpub"))
       ),
       tags$div(
@@ -54,7 +54,7 @@ ui <- list(
         tabItem(
           tabName = "overview",
           withMathJax(),
-          h1("Sample Application for BOAST Apps"), # This should be the full name.
+          h1("Statistical Interpretations"), # This should be the full name.
           p("This is a sample Shiny application for BOAST. Remember, this page
             will act like the front page (home page) of your app. Thus you will
             want to have this page catch attention and describe (in general terms)
@@ -95,7 +95,7 @@ ui <- list(
             citeApp(),
             br(),
             br(),
-            div(class = "updated", "Last Update: 5/19/2022 by NJH.")
+            div(class = "updated", "Last Update: 9/8/2022 by POP.")
           )
         ),
         #### Set up the Prerequisites Page ----
