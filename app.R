@@ -8,14 +8,17 @@ library(boastUtils)
 # Load additional dependencies and setup functions
 # source("global.R")
 
+# Question Bank----
+
+
 # Define UI for App ----
 ui <- list(
   ## Create the app page ----
   dashboardPage(
     skin = "purple",
-    ### Create the app header ----
+    ### App Header ----
     dashboardHeader(
-      title = "Statistical Interpretations", # You may use a shortened form of the title here
+      title = "Statistical Interpretations",
       titleWidth = 250,
       tags$li(class = "dropdown", actionLink("info", icon("info"))),
       tags$li(
@@ -29,17 +32,14 @@ ui <- list(
         )
       )
     ),
-    ### Create the sidebar/left navigation menu ----
-    dashboardSidebar(
+    ### Sidebar ----
+    dashboardSidebar( # Need to have Overview, prereq, game, references.
       width = 250,
       sidebarMenu(
         id = "pages",
         menuItem("Overview", tabName = "overview", icon = icon("tachometer-alt")),
         menuItem("Prerequisites", tabName = "prerequisites", icon = icon("book")),
-        #menuItem("Explore", tabName = "explore", icon = icon("wpexplorer")),
-        #menuItem("Challenge", tabName = "challenge", icon = icon("cogs")),
         menuItem("Game", tabName = "game", icon = icon("gamepad")),
-        #menuItem("Wizard", tabName = "wizard", icon = icon("hat-wizard")),
         menuItem("References", tabName = "references", icon = icon("leanpub"))
       ),
       tags$div(
@@ -47,34 +47,36 @@ ui <- list(
         boastUtils::sidebarFooter()
       )
     ),
-    ### Create the content ----
+    ### Body ----
     dashboardBody(
       tabItems(
-        #### Set up the Overview Page ----
+        #### Overview Page ----
         tabItem(
           tabName = "overview",
           withMathJax(),
           h1("Statistical Interpretations"), # This should be the full name.
-          p("This is a sample Shiny application for BOAST. Remember, this page
-            will act like the front page (home page) of your app. Thus you will
-            want to have this page catch attention and describe (in general terms)
-            what the user can do in the rest of the app."),
+          p("This app will introduce and/or refine skills of interpreting various
+            statistics and statistical tests."),
           h2("Instructions"),
-          p("This information will change depending on what you want to do."),
+          p("Click the button below to review some prerequisites."),
           tags$ol(
-            tags$li("Review any prerequiste ideas using the Prerequistes tab."),
-            tags$li("Explore the Exploration Tab."),
-            tags$li("Challenge yourself."),
-            tags$li("Play the game to test how far you've come.")
+            tags$li("Review your knowledge using the prerequisites page before 
+                    playing the game"),
+            tags$li("Once you feel ready, go to the game tab. Your goal is to 
+                    score as high as possible without taking your mountain 
+                    climber over the cliff and into the abyss. To do this, 
+                    answer as many questions correctly as you can. If you answer
+                    too many wrong, your climber will get closer and closer to 
+                    the top until they fall off.")
           ),
-          ##### Go Button--location will depend on your goals
+          ##### Prereq Button ----
           div(
             style = "text-align: center;",
             bsButton(
-              inputId = "go1",
-              label = "GO!",
+              inputId = "prereqButton",
+              label = "Prerequisites",
               size = "large",
-              icon = icon("bolt"),
+              icon = icon("book"), # Goes to prereq page
               style = "default"
             )
           ),
@@ -84,7 +86,7 @@ ui <- list(
           h2("Acknowledgements"),
           p(
             "This version of the app was developed and coded by Neil J.
-            Hatfield  and Robert P. Carey, III.",
+            Hatfield and Robert P. Carey, III.",
             br(),
             "We would like to extend a special thanks to the Shiny Program
             Students.",
@@ -202,8 +204,6 @@ ui <- list(
           tabName = "references",
           withMathJax(),
           h2("References"),
-          p("You'll need to fill in this page with all of the appropriate
-            references for your app."),
           p(
             class = "hangingindent",
             "Bailey, E. (2015). shinyBS: Twitter bootstrap components for shiny.
@@ -231,10 +231,22 @@ server <- function(input, output, session) {
         session = session,
         type = "info",
         title = "Information",
-        text = "This App Template will help you get started building your own app"
+        text = "To review, visit the prerequisites page. When you are ready to 
+        test yourself, go to the game page and see how far you can get up the 
+        mountain withour falling off."
       )
     }
   )
+  ## Overview Prereq Button----
+  observeEvent(
+    eventExpr = input$prereqButton,
+    handlerExpr = {
+      updateTabItems(
+        session = session,
+        inputId = "prereqButton",
+        selected = "prerequisites"
+      )
+    })
 
 }
 
