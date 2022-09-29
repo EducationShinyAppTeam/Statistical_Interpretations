@@ -106,99 +106,178 @@ ui <- list(
           withMathJax(),
           h2("Prerequisites"),
           p("In order to get the most out of this app, please review the
-            following:"),
-          tags$ul(
-            tags$li("Pre-req 1--Technical/Conceptual Prerequisites are ideas that
-                    users need to have in order to engage with your app fully."),
-            tags$li("Pre-req 2--Contextual Prerequisites refer to any information
-                    about a context in your app that will enrich a user's
-                    understandings."),
-            tags$li("Pre-req 3"),
-            tags$li("Pre-req 4")
-          ),
-          p("Notice the use of an unordered list; users can move through the
-            list any way they wish."),
+            following terms"),
           box(
-            title = strong("Null Hypothesis Significance Tests (NHSTs)"),
+            title = strong("Z-score"),
             status = "primary",
             collapsible = TRUE,
             collapsed = TRUE,
             width = '100%',
-            "In the Confirmatory Data Analysis tradition, null hypothesis
-            significance tests serve as a critical tool to confirm that a
-            particular theoretical model describes our data and to make a
-            generalization from our sample to the broader population
-            (i.e., make an inference). The null hypothesis often reflects the
-            simpler of two models (e.g., 'no statistical difference',
-            'there is an additive difference of 1', etc.) that we will use to
-            build a sampling distribution for our chosen estimator. These
-            methods let us test whether our sample data are consistent with this
-            simple model (null hypothesis)."
+            "A standardization..."
           ),
           box(
-            title = strong(tags$em("p"), "-values"),
+            title = strong("p-value"),
             status = "primary",
             collapsible = TRUE,
-            collapsed = FALSE,
+            collapsed = TRUE,
             width = '100%',
-            "The probability that our selected estimator takes on a value at
-            least as extreme as what we observed given our null hypothesis. If
-            we were to carry out our study infinitely many times and the null
-            hypothesis accurately modeled what we're studying, then we would
-            expect for our estimator to produce a value at least as extreme as
-            what we have seen 100*(p-value)% of the time. The larger the
-            p-value, the more often we would expect our estimator to take on a
-            value at least as extreme as what we've seen; the smaller, the less
-            often."
-          )
+            "A p-value measures the probability of obtaining such extreme 
+            results as actually observed under the assumption the null 
+            hypothesis is true."
+          ),
+          box(
+            title = strong("Confidence Interval"),
+            status = "primary",
+            collapsible = TRUE,
+            collapsed = TRUE,
+            width = '100%',
+            "A range of plausible values for the value of an unknown parameter.
+            A higher confidence level will produce a larger range of values as 
+            compared to using a smaller confidence level (ie. a 95% CI will 
+            have a smaller range than a 99% CI)."
+          ),
+          box(
+            title = strong("Hypothesis Test"),
+            status = "primary",
+            collapsible = TRUE,
+            collapsed = TRUE,
+            width = '100%',
+            "A branch of statistical inference which allows for two hypotheses 
+            to be tested for significance against each other."
+          ),
+          box(
+            title = strong("Regression"),
+            status = "primary",
+            collapsible = TRUE,
+            collapsed = TRUE,
+            width = '100%',
+            "A way to interpret the relationship between a independent and 
+            dependent variable in order to make predictions about data that has 
+            not been previously recorded. Linear Regression follows the general 
+            equation form y = mx + b."
+          ),
+          h3("Interpreting Data and Statistical Tests"),
+          p("Use the following dropdowns to learn or review how to correctly 
+            interpret various statistics and statistical tests."),
+          box(
+            title = strong("Interpreting a p-value"),
+            status = "primary",
+            collapsible = TRUE,
+            collapsed = TRUE,
+            width = '100%',
+            "To interpret a p-value, imagine we are given a p-value of 0.05.
+            That means for whatever statistic we tested, there is a probability 
+            of 0.05 we computed that statistic by pure chance, and it is instead
+            more reasonable to assume the statistic we computed supports an 
+            alternative hypothesis."
+          ),
+          box(
+            title = strong("Interpreting Confidence Intervals"),
+            status = "primary",
+            collapsible = TRUE,
+            collapsed = TRUE,
+            width = '100%',
+            "Say we compute a 95% Confidence Interval to be (0.55, 0.69). To 
+            correctly interpret this, we would say the following: ''We are 95% 
+            confident the true value is between 0.55 and 0.69.''"
+          ),
+          box(
+            title = strong("Interpreting Regression Equations"),
+            status = "primary",
+            collapsible = TRUE,
+            collapsed = TRUE,
+            width = '100%',
+            "We are given a linear regression equation to be y = 0.5x + 32. To 
+            correctly interpret the slope, we would say ''For every one unit 
+            increase in x we would expect y to increase by 0.5.'' To correctly 
+            interpret the intercept, we would say ''When x = 0 we would expect 
+            y to have a value of 32.''"
+          ),
         ),
         #### Note: you must have at least one of the following pages. You might
         #### have more than one type and/or more than one of the same type. This
         #### will be up to you and the goals for your app.
-        #### Set up an Explore Page ----
-        tabItem(
-          tabName = "explore",
-          withMathJax(),
-          h2("Explore the Concept"),
-          p("This page should include something for the user to do, the more
-            active and engaging, the better. The purpose of this page is to help
-            the user build a productive understanding of the concept your app
-            is dedicated to."),
-          p("Common elements include graphs, sliders, buttons, etc."),
-          p("The following comes from the NHST Caveats App:"),
-        ),
-        #### Set up a Challenge Page ----
-        tabItem(
-          tabName = "challenge",
-          withMathJax(),
-          h2("Challenge Yourself"),
-          p("The general intent of a Challenge page is to have the user take
-            what they learned in an Exploration and apply that knowledge in new
-            contexts/situations. In essence, to have them challenge their
-            understanding by testing themselves."),
-          p("What this page looks like will be up to you. Something you might
-            consider is to re-create the tools of the Exploration page and then
-            a list of questions for the user to then answer.")
-        ),
-        #### Set up a Game Page ----
+    
+        
+        #### Game Page ----
         tabItem(
           tabName = "game",
           withMathJax(),
-          h2("Practice/Test Yourself with [Type of Game]"),
-          p("On this type of page, you'll set up a game for the user to play.
-            Game types include Tic-Tac-Toe, Matching, and a version Hangman to
-            name a few. If you have ideas for new game type, please let us know.")
-        ),
-        #### Set up a Wizard Page ----
-        tabItem(
-          tabName = "wizard",
-          withMathJax(),
-          h2("Wizard"),
-          p("This page will have a series of inputs and questions for the user to
-            answer/work through in order to have the app create something. These
-            types of Activity pages are currently rare as we try to avoid
-            creating 'calculators' in the BOAST project.")
-        ),
+          h2("Cliff Hangar Game"),
+          p("Answer the questions provided as accurately as possible; as you get
+            questions wrong, your mountain climber will get closer to falling 
+            off the cliff! Score as high as possible without falling off!"),
+          fluidRow(
+            column(
+              width = 6,
+              wellPanel(
+                h3("Question"),
+                uiOutput("question"),
+                br(),
+                radioGroupButtons(
+                  inputId = "mc1",
+                  label = "Question and scenario will be displayed here.",
+                  status = "game",
+                  direction = "horizontal",
+                  selected = character(0),
+                  checkIcon = list(
+                    yes = icon("check-square"),
+                    no = icon("square-o")
+                  ),
+                  choices = list(
+                    # "Pick the expression below that best addresses the question.",
+                    "\\(\\frac{1}{4}\\)",
+                    "\\(\\frac{2}{4}\\)",
+                    "\\(\\frac{3}{4}\\)",
+                    "\\(\\frac{4}{4}\\)"
+                  ),
+                  width = "100%",
+                  justified = FALSE,
+                  individual = FALSE
+                ),
+                br(),
+                fluidRow(
+                  column(
+                    width = 4,
+                    bsButton(
+                      inputId = "submit",
+                      label = "Submit",
+                      size = "large",
+                      style = "default",
+                      disabled = FALSE
+                    )
+                  ),
+                  column(
+                    width = 4,
+                    uiOutput("mark")
+                  )
+                ),
+                br(),
+                bsButton(
+                  inputId = "nextQuestion",
+                  label = "Next Question",
+                  size = "large",
+                  style = "success",
+                  disabled = TRUE
+                ),
+                bsButton(
+                  "restart",
+                  "Restart",
+                  size = "large",
+                  style = "danger",
+                  disabled = FALSE
+                )
+              )
+            ),
+            column(
+              width = 6,
+              uiOutput("correct", align = "center"),
+              uiOutput("gameProgressTree", align = "center")
+            )
+          ),
+          uiOutput("math1"),
+          uiOutput("math2")
+          ),
         #### Set up the References Page ----
         tabItem(
           tabName = "references",
