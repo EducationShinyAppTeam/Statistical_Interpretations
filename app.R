@@ -121,9 +121,14 @@ ui <- list(
             collapsible = TRUE,
             collapsed = TRUE,
             width = '100%',
-            "A p-value measures the probability of obtaining such extreme 
+            p("A p-value measures the probability of obtaining such extreme 
             results as actually observed under the assumption the null 
-            hypothesis is true."
+            hypothesis is true."),
+            p("To interpret a p-value, imagine we are given a p-value of 0.05.
+            That means for whatever statistic we tested, there is a probability 
+            of 0.05 we computed that statistic by pure chance, and it is instead
+            more reasonable to assume the statistic we computed supports an 
+            alternative hypothesis.")
           ),
           box(
             title = strong("Confidence Interval"),
@@ -218,7 +223,7 @@ ui <- list(
                   inputId = "mc1",
                   label = "Question and scenario will be displayed here.",
                   status = "game",
-                  direction = "horizontal",
+                  direction = "vertical",
                   selected = character(0),
                   checkIcon = list(
                     yes = icon("check-square"),
